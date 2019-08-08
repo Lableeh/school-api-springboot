@@ -1,6 +1,7 @@
 package io.javabrains.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import io.javabrains.dao.AdviserRepo;
 import io.javabrains.dao.SectionRepository;
 import io.javabrains.dao.StudentRepository;
+import io.javabrains.exception.SectionException;
 import io.javabrains.model.Adviser;
 import io.javabrains.model.Section;
 import io.javabrains.model.SectionRequest;
@@ -31,14 +33,30 @@ public class SectionServices {
 	}
 
 	public Section getSectionById(int sectionId) {
+		Optional<Section> sectionID = sectionRepo.findById(sectionId);
+		if(!sectionID.isPresent()) {
+			throw new SectionException("SectionID: "+sectionId+" does not exist!!!");
+		}
 		return sectionRepo.findById(sectionId).get();
 	}
 
 	public void addSection(Section section) {
+		int sectionId = section.getSectionId();
+		Optional<Section> sectionID = sectionRepo.findById(sectionId);
+		if(sectionID.isPresent()) {
+			throw new SectionException("SectionID "+sectionId+" already exist!!!");
+		}
 		sectionRepo.save(section);
 	}
 
-	public void updateSection(Section section) {
+	public void updateSection(int sectionId,Section section) {
+		Optional<Section> sectionID = sectionRepo.findById(sectionId);
+		if(!sectionID.isPresent()) {
+			throw new SectionException("SectionID: "+sectionId+" does not exist!!!");
+		}
+		Section existingSection = sectionRepo.findById(sectionId).get();
+		Adviser sectionAdviser = existingSection.getAdviser();
+		section.setAdviser(sectionAdviser);
 		sectionRepo.save(section);
 	}
 
