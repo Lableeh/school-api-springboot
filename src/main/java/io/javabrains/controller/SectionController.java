@@ -49,7 +49,7 @@ public class SectionController {
 		
 	@PutMapping("/section/{sectionId}")
 	public void updateSection(@RequestBody Section section ,@PathVariable int sectionId) {
-		sectionServices.updateSection(section);
+		sectionServices.updateSection(sectionId, section);
 	}
 	
 	@DeleteMapping("section/{sectionId}")

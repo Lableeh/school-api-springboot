@@ -3,6 +3,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,11 +24,11 @@ public class Section {
 	@Column
 	private String sectionName;
 	
-	@OneToOne(mappedBy="section",orphanRemoval = true,cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="section",fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("section")
 	private Adviser adviser;
 	
-	@OneToMany(mappedBy = "section", cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
 	@JsonIgnoreProperties("section")
 	private List<Student> students;
 		
