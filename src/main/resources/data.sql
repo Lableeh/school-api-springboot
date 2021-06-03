@@ -19,6 +19,14 @@ insert into student values(201903,17,'Joy','Female','Antipasado',500003);
 insert into student values(201904,22,'Lovely','Female','Argente',500004);
 insert into student values(201905,24,'Jason','Male','Fernandez',500005);
 
+insert into category values('1001','Action','Mobile Legends');
+insert into category values('1002','Role-Playing','Minecraft');
+insert into category values('1003','Action','WildRift');
 
+insert into information values('1001','Mobile Legends','4.5');
+insert into information values('1002','Minecraft','3.0');
+insert into information values('1004','Valorant','5.0');
+
+insert into userextension values('EOLNGS01','15','Y','2020-08-19','1','N','N');
 
 
