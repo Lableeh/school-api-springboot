@@ -1,98 +1,91 @@
 package io.javabrains.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 
 
 @Entity
 @Table(name = "STUDENT")
-public class    Student {
+public class Student {
 
-	@Id
-	private int studentId;
+    @Id
+    private int studentId;
 
-	@Column
-	private String firstName;
-	@Column
-	private String lastName;
-	@Column
-	private int age;
-	@Column
-	private String gender;
+    @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @Column
+    private int age;
+    @Column
+    private String gender;
 
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "fk_sectionId")
-	//@JsonIgnoreProperties("student")
-	private Section section;
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fk_sectionId")
+    //@JsonIgnoreProperties("student")
+    private Section section;
 
-	public Student() {
+    public Student() {
 
-	}
+    }
 
-	public Student(int studentId, String firstName, String lastName, int age, String gender) {
-		super();
-		this.studentId = studentId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-		this.gender = gender;
-	}
+    public Student(int studentId, String firstName, String lastName, int age, String gender) {
+        super();
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+    }
 
-	public int getStudentId() {
-		return studentId;
-	}
+    public int getStudentId() {
+        return studentId;
+    }
 
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
-	}
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public Section getSection() {
-		return section;
-	}
+    public Section getSection() {
+        return section;
+    }
 
-	public void setSection(Section section) {
-		this.section = section;
-	}
+    public void setSection(Section section) {
+        this.section = section;
+    }
 
 }

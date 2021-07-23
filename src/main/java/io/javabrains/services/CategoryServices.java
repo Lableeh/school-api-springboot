@@ -2,7 +2,6 @@ package io.javabrains.services;
 
 import io.javabrains.dao.CategoryRepository;
 import io.javabrains.model.Category;
-import io.javabrains.model.Information;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ public class CategoryServices {
         return categoryList;
     }
 
-    public Category getGameDetailsById (String id) {
+    public Category getGameDetailsById(String id) {
         Category gameDetails = repository.getGameDetailsById(id);
         return gameDetails;
     }
